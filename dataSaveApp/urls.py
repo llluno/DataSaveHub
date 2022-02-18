@@ -14,12 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls import url
+from django.urls import path
 
-import dataSaveApp.urls
+from django.conf.urls import url
+from django.contrib import admin
+from django.urls import path
+
+from dataSaveApp.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'dsh/', include(dataSaveApp.urls)),
+    url(r'^saveData', saveData, name='saveData'),
+    url(r'^initTable', initTable, name='initTable'),
+    url(r'^addDataSource', addDataSource, name='addDataSource'),
+    # url(r'^alterTable/', "", name='alterTable'),
+    # url(r'^token/', "", name='token'),
 ]
